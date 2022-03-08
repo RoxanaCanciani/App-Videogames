@@ -1,0 +1,77 @@
+.paginado{
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    
+    width: 300;
+  font-size: 20px;
+    
+  }
+
+  .home{
+    background-image: url('../../imagenes/otrohome.png');
+    background-size: cover;
+   
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 1%;
+    
+    right: 1%;
+    left: 1%;
+   }
+
+   .cards{
+    
+    
+
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 10px;
+
+grid-auto-rows: minmax(100px, auto);
+justify-content: center;
+align-items: center;
+margin-bottom: 0px;
+    grid-template-columns: 33% 33% 33% ;
+   
+    
+
+}
+
+.select{
+  background-color: rgb(146, 146, 150);
+  cursor: pointer;
+  display:inline-block;
+  justify-content: center;
+  text-align: center;
+  padding: 2px;
+  border-radius: 1px;
+  border-style: groove;
+}
+
+.create{
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 5px;
+  font-family: italic;
+  color: #000000;
+  font-size: 20px;
+  background-color: rgb(199, 200, 240);
+  padding:  6px 16px 6px 16px ;
+  text-decoration: none;
+  
+}
+.country{
+  font-family: dosis;
+  font-size: 40px;
+   color: rgb(66, 63, 243);
+}
+
+.ca{
+  
+  
+  text-align: center;
+  font-family: dosis;
+  font-size: 25px;
+   color: black;
+}

@@ -1,45 +1,40 @@
-const {Genre, Videogame}= require('../db.js');
+const {TipoPapel, Medida, Gramaje}= require('../db.js');
 const axios = require('axios');
 
-const {apikey} = process.env;
 
- const videogames=`https://api.rawg.io/api/games?key=${apikey}`;
 
+const info= require('../info.js');
+console.log(info)
  const apiInfo = async () => {
-    let videoApi = [];
-    const allVideoGames = [videogames];
-    for(let i = 0; i < 5; i++) {
-        const gamesPerPag = await axios.get(`${allVideoGames[i]}`)
-       
-        allVideoGames.push(gamesPerPag.data.next)
-        const dataGame = gamesPerPag.data.results.map((e) =>
+    
+        const data = info.map((e) =>
         
          {
              return {
-                 id: e.id,
-                 name: e.name,
-                 description: e.description? e.description: 'No description',
-                 image: e.background_image,
-                 released: e.released,
-                 rating: e.rating,
-                 platforms: e.platforms.map(p => p.platform.name.toUpperCase()),
-                 genres: e.genres.map(g => g),
+                 
+                 name:e.tipoPapel,
+                 precioxKilo:e.precioxKilo,
+                 alto:e.alto,
+                 ancho: e.ancho,
+                 gramajes: e.gramajes,
+                 paginas:e.paginas,
+                 libros: e.cantidadLibros,
              }
      
          }
         )
         
-        videoApi = videoApi.concat(dataGame);
+        return data;
      }
-     //console.log(videoApi)
-     return videoApi;
- }
+
+    
+ 
 
  const getBdInfo= async()=>{
     
-    return await Videogame.findAll({
+    return await TipoPapel.findAll({
         include:{
-            model:Genre,
+            model:Medida, Gramaje,
             attributes:['name'],
             througth:{
                 attributes:[],
@@ -48,15 +43,9 @@ const {apikey} = process.env;
     });
 
 }
-const getAllVideogames= async()=>{
-    const apiAllInfo= await apiInfo();
-    const bdInfo= await getBdInfo();
-    const allInfo= apiAllInfo.concat(bdInfo);
 
-    return allInfo;
-}  
 
 
  
  
-module.exports = {apiInfo,getAllVideogames,getBdInfo};
+module.exports = {apiInfo,getBdInfo};

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {getVideogamesByName} from "../../action";
+import { useSelector } from "react-redux";
 
 
 export default function SearchBar() {
@@ -14,14 +15,14 @@ export default function SearchBar() {
 function handleInputChange(e) {
     e.preventDefault ();
     setSearchName(e.target.value);
-    
-   }
+    }
 
-    function handleSubmit(e) {
+    function handleSubmit(e) {    
         e.preventDefault();
         dispatch(getVideogamesByName(searchName));
         setSearchName("");
     }
+
 
     return (
         <div >

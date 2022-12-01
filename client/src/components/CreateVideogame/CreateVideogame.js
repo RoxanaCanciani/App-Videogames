@@ -170,7 +170,7 @@ return(
                  </div>
 
                   <label className={styles.letra}>Lanzamiento:</label>
-                 <input name='released' type="date" id='date' min='2022-03-23' max='2022-12-31' value={input.released} onChange={handlerOnChange}/>
+                 <input name='released' type="date" id='date' min='2022-03-16' max='2022-12-31' value={input.released} onChange={handlerOnChange}/>
                  <div className={styles.letra}>  
                  {errors.released && <p >{errors.released}</p>}
                  </div> 
